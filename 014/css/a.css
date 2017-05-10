@@ -1,0 +1,45 @@
+body{
+	background-color: skyblue;
+}
+.zxc{
+	width: 500px;
+	height: 300px;
+	background: #fff;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+	border: 1px solid #000;
+}
+.zxc h3{
+	margin-top: 10px;
+}
+.zxc input{
+	width: 75%;
+	height: 40px;
+	margin: 10px;
+	outline: none;
+	border:1px dashed lightblue;
+	text-indent: 1em;
+	transition: all .5s;
+}
+.zxc input:hover{
+	border: 1px solid lightblue;
+	box-shadow: inset 0px 0px 2px 2px rgba(0,0,0,.5);
+}
+.zxc input[type="submit"]{
+	width: 25%;
+	text-indent: 0;
+	background: #99f;
+	border: 1px solid #000;
+	transition: all .5s;
+}
+.zxc input[type="submit"]:hover{
+	width: 30%;
+	background: #ddf;
+	box-shadow: none;
+}
+
