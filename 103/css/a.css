@@ -1,0 +1,33 @@
+.a{
+	width: 250px;
+	min-height: 240px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);	
+}
+.a0 input{
+	width: 150px;
+	height: 70px;
+	margin: 10px 0px;
+} 
+.text{
+	width: 150px;
+}
+.button1{
+	width: 60px;
+	float: right;
+}
+.button2{
+	width: 60px;
+	float: right;
+}
+.c{
+	width: 150px;
+	float: left;
+}
+.d{
+	height: 200px;
+	width: 150px;
+	float: left;
+}

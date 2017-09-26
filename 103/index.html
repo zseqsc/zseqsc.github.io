@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/a.css"/>
+	</head>
+	<body>
+		<div class="a a0">
+			<h2>猜数字</h2>
+			<input type="button" name="jian" id="jian" value="简单" />
+			<input type="button" name="pu" id="pu" value="普通" />
+			<input type="button" name="kun" id="kun" value="困难" />
+		</div>
+		<!--简单-->
+		<div class="a" style="display:none">
+			<h2>猜数字</h2>
+			<input type="number" min="1" max="10" name="text" class="text" placeholder="输入1-10中间的整数" />
+			<input type="button" name="button1" class="button1" style="display:block" value="提交" />
+			<input type="button" name="button2" class="button2" style="display:none" value="重来" />
+			<div class="c">
+				剩余次数：6
+			</div>
+			<div class="d">
+				提交历史：<br />
+			</div>
+		</div>
+			<!--普通-->
+		<div class="a" style="display:none">
+			<h2>猜数字</h2>
+			<input type="number" min="1" max="50" name="text" class="text" placeholder="输入1-50中间的整数" />
+			<input type="button" name="button1" class="button1" style="display:block" value="提交" />
+			<input type="button" name="button2" class="button2" style="display:none" value="重来" />
+			<div class="c">
+				剩余次数：6
+			</div>
+			<div class="d">
+				提交历史：<br />
+			</div>
+		</div>
+			<!--困难-->
+		<div class="a" style="display:none">
+			<h2>猜数字</h2>
+			<input type="number" min="1" max="100" name="text" class="text" placeholder="输入1-100中间的整数" />
+			<input type="button" name="button1" class="button1" style="display:block" value="提交" />
+			<input type="button" name="button2" class="button2" style="display:none" value="重来" />
+			<div class="c">
+				剩余次数：6
+			</div>
+			<div class="d">
+				提交历史：<br />
+			</div>
+		</div>
+			<script type="text/javascript">
+				var n=6;
+				var diva=document.getElementsByClassName("a")
+				var text=document.getElementsByClassName("text");
+				var	button1=document.getElementsByClassName("button1");
+				var button2=document.getElementsByClassName("button2");
+				var divc=document.getElementsByClassName("c");
+				var divd=document.getElementsByClassName("d");
+				var jian=document.getElementById("jian");
+				var pu=document.getElementById("pu");
+				var kun=document.getElementById("kun");
+				var x=Math.floor(Math.random()*10+1);
+				var y=Math.floor(Math.random()*50+1);
+				var z=Math.floor(Math.random()*100+1);
+//				简单
+				jian.addEventListener("click",jiandan);
+				function jiandan () {
+					diva[1].style.display="block";
+					diva[0].style.display="none";
+				}
+				button1[0].addEventListener("click",fang1);
+				function fang1 () {
+					a=text[0].value;
+					if(a<"0"&&a>"9"){
+						divd[0].innerHTML+="请输入数字<br/>";
+					}
+					else if(a>x&&n>0){
+						divd[0].innerHTML+="你猜测的数字"+a+"偏大<br/>";
+					}
+					else if(a<x&&n>0){
+						divd[0].innerHTML+="你猜测的数字"+a+"偏小<br/>";
+					}
+					else if(a==x&&n>0){
+						divd[0].innerHTML+="你猜对了<br/>";
+						button1[0].style.display="none";
+						button2[0].style.display="block";
+					}
+					else if(n==0){
+						divd[0].innerHTML+="次数已用完<br/>";
+						text[0].disabled=true;
+						button1[0].style.display="none";
+						button2[0].style.display="block";
+					}
+					n--;
+					if(n>=0){
+						divc[0].innerHTML="剩余次数："+n;
+					}
+				} 
+				button2[0].addEventListener("click",chong1);
+				function chong1 () {
+					x=Math.floor(Math.random()*10+1);
+					n=6;
+					divc[0].innerHTML="剩余次数："+n;
+					divd[0].innerHTML="提交历史：<br/>";
+					text[0].disabled=false;
+					button1[0].style.display="block";
+					button2[0].style.display="none";
+				}
+//				普通
+				pu.addEventListener("click",putong);
+				function putong () {
+					diva[2].style.display="block";
+					diva[0].style.display="none";
+				}
+				button1[1].addEventListener("click",fang2);
+				function fang2 () {
+					a=text[1].value;
+					if(a<"0"&&a>"9"){
+						divd[1].innerHTML+="请输入数字<br/>";
+					}
+					else if(a>y&&n>0){
+						divd[1].innerHTML+="你猜测的数字"+a+"偏大<br/>";
+					}
+					else if(a<y&&n>0){
+						divd[1].innerHTML+="你猜测的数字"+a+"偏小<br/>";
+					}
+					else if(a==y&&n>0){
+						divd[1].innerHTML+="你猜对了<br/>";
+						button1[1].style.display="none";
+						button2[1].style.display="block";
+					}
+					else if(n==0){
+						divd[1].innerHTML+="次数已用完<br/>";
+						text[1].disabled=true;
+						button1[1].style.display="none";
+						button2[1].style.display="block";
+					}
+					n--;
+					if(n>=0){
+						divc[1].innerHTML="剩余次数："+n;
+					}
+				} 
+				button2[1].addEventListener("click",chong2);
+				function chong2 () {
+					y=Math.floor(Math.random()*50+1);
+					n=6;
+					divc[1].innerHTML="剩余次数："+n;
+					divd[1].innerHTML="提交历史：<br/>";
+					text[1].disabled=false;
+					button1[1].style.display="block";
+					button2[1].style.display="none";
+				}
+				//困难
+				kun.addEventListener("click",kunnan);
+				function kunnan () {
+					diva[3].style.display="block";
+					diva[0].style.display="none";
+				}
+				button1[2].addEventListener("click",fang3);
+				function fang3 () {
+					a=text[2].value;
+					if(a<"0"&&a>"9"){
+						divd[2].innerHTML+="请输入数字<br/>";
+					}
+					else if(a>z&&n>0){
+						divd[2].innerHTML+="你猜测的数字"+a+"偏大<br/>";
+					}
+					else if(a<z&&n>0){
+						divd[2].innerHTML+="你猜测的数字"+a+"偏小<br/>";
+					}
+					else if(a==z&&n>0){
+						divd[2].innerHTML+="你猜对了<br/>";
+						button1[2].style.display="none";
+						button2[2].style.display="block";
+					}
+					else if(n==0){
+						divd[2].innerHTML+="次数已用完<br/>";
+						text[2].disabled=true;
+						button1[2].style.display="none";
+						button2[2].style.display="block";
+					}
+					n--;
+					if(n>=0){
+						divc[2].innerHTML="剩余次数："+n;
+					}
+				} 
+				button2[2].addEventListener("click",chong3);
+				function chong3() {
+					z=Math.floor(Math.random()*100+1);
+					n=6;
+					divc[2].innerHTML="剩余次数："+n;
+					divd[2].innerHTML="提交历史：<br/>";
+					text[2].disabled=false;
+					button1[2].style.display="block";
+					button2[2].style.display="none";
+				}
+				console.log(x);
+				console.log(y);
+				console.log(z);
+			</script>
+		</div>
+	</body>
+</html>
