@@ -1,0 +1,16 @@
+.a{
+	width: 800px;
+	height: 500px;
+	border: 1px solid #000;
+	margin: auto;
+	text-align: center;
+}
+.a .text{
+	text-align: center;
+}
+.a #button{
+	display: block;
+	margin: 40px auto;
+	width: 550px;
+	height: 50px;
+}
