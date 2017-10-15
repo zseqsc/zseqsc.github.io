@@ -4,72 +4,48 @@
 		<meta charset="utf-8" />
 		<title></title>
 		<style type="text/css">
-			.clock{
-				width: 200px;
-				height: 200px;
-				background: url(https://bestace.github.io/fed/ppt/demos/jsBase/img/clock.jpg) no-repeat;
-				background-size:100% ;
-				position: relative;
+			#zxc{
+				width: 600px;
+				margin: auto;
 			}
-			#shi{
-				width: 5px;
-				height: 40px;
-				background: #000;
-				position: absolute;
-				bottom: 100px;
-				left: 97.5px;
-				transform-origin:bottom;
+			.a{
+				font-size: 4em;
+				text-align: center;
 			}
-			#fen{
-				width: 4px;
-				height: 50px;
-				background: #000;
-				position: absolute;
-				bottom: 100px;
-				left: 98px;
-				transform-origin:bottom;
-			}
-			#miao{
-				width: 3px;
-				height: 60px;
-				background: #f00;
-				position: absolute;
-				bottom: 100px;
-				left: 98.5px;
-				transform-origin:bottom;
-			}
-			
 		</style>
 	</head>
 	<body>
-		<div class="clock">
-			<div id="shi">
-				
-			</div>
-			<div id="fen">
-				
-			</div>
-			<div id="miao">
-				
-			</div>
+		<div id="zxc">
+			<p class="a"></p>
+			<p class="a"></p>
 		</div>
+		
+		<script type="text/javascript">
+			var n="现,在,是,2,0,1,7,年,1,0,月";
+			var x="我,想,不,出,写,什,么,了"			
+			var m=n.split(",");
+			var y=x.split(",")
+			var i=0;
+			var j=0;
+			var a=document.getElementsByClassName("a");
+			var set=setInterval(fang,250);
+			function fang () {
+				if(i<m.length){
+					a[0].innerText+=m[i]+"";
+					i=i+1;
+				}
+				if(i==m.length&&j<y.length){
+					i=m.length;
+					a[1].innerText+=y[j]+"";
+					j=j+1;
+				}
+				if(i==m.length&&j==y.length){
+					a[0].innerText="";
+					a[1].innerText="";
+					i=0;
+					j=0;
+				}
+			}
+		</script>
 	</body>
-	<script type="text/javascript">
-		var a=new Date;
-		var x,y,z;
-		var shi=document.getElementById("shi");
-		var fen=document.getElementById("fen");
-		var miao=document.getElementById("miao");
-		function fang(){
-			a=new Date;
-			x=a.getSeconds()*6;
-			y=(a.getMinutes()+a.getSeconds()/60)*6;
-			z=(a.getHours()+a.getMinutes()/60+a.getSeconds()/3600)*30;
-			shi.style.webkitTransform="rotate("+z+"deg)";
-			fen.style.webkitTransform="rotate("+y+"deg)";
-			miao.style.webkitTransform="rotate("+x+"deg)";
-		}
-		fang();
-		setInterval(fang,1000);
-	</script>
 </html>
