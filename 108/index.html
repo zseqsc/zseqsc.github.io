@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/a.css"/>
+	</head>
+	<body>
+		<div class="to">
+			<i class="fa fa-reorder btn"></i>案例
+		</div>
+		<div class="zx" style="display: none;">
+			<ul>
+				<li class="Item">Item1 <i class="fa fa-angle-right jt"></i>
+					<ul class="submenu" style="display: none;">
+						<li>Item1-a</li>
+						<li>Item1-b</li>
+						<li>Item1-c</li>
+						<li>Item1-d</li>
+					</ul>
+				</li>
+				<li class="Item">Item2 <i class="fa fa-angle-right jt"></i>
+					<ul class="submenu" style="display: none;">
+						<li>Item2-a</li>
+						<li>Item2-b</li>
+						<li>Item2-c</li>
+						<li>Item2-d</li>
+					</ul>
+				</li>
+				<li class="Item">Item3 <i class="fa fa-angle-right jt"></i>
+					<ul class="submenu" style="display: none;">
+						<li>Item3-a</li>
+						<li>Item3-b</li>
+						<li>Item3-c</li>
+						<li>Item3-d</li>
+					</ul>
+				</li>
+				<li class="Item">Item4 <i class="fa fa-angle-right jt" ></i>
+					<ul class="submenu" style="display: none;">
+						<li>Item4-a</li>
+						<li>Item4-b</li>
+						<li>Item4-c</li>
+						<li>Item4-d</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var i=0;
+			var btn=document.getElementsByClassName("btn");
+			var zx=document.getElementsByClassName("zx");
+			btn[0].addEventListener("click",function() {
+				if(zx[0].style.display=="none"){
+					zx[0].style.display="block";
+					btn[0].style.transform="rotate(90deg)";
+				}
+				else{
+					zx[0].style.display="none";
+					btn[0].style.transform="rotate(0deg)";
+				}
+			})
+			var Item=document.getElementsByClassName("Item");
+			var submenu=document.getElementsByClassName("submenu");
+			var jt=document.getElementsByClassName("jt");
+			for(i=0;i<4;i++){
+				Item[i].addEventListener("click",function(n) {
+					return function() {
+						if(submenu[n].style.display=="none"){
+							submenu[n].style.display="block";
+							jt[n].style.transform="rotate(90deg)";
+						}
+						else{
+							jt[n].style.transform="rotate(0deg)";
+							submenu[n].style.display="none";
+						}
+					}
+				}(i));
+			}
+		</script>
+	</body>
+</html>

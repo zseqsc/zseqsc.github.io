@@ -1,0 +1,38 @@
+body{
+	margin: 0;
+	color: #fff;
+}
+ul li{
+	list-style: none;
+	font-size: 18px;
+}
+.to{
+	height: 70px;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	font-size: 25px;
+	background: #8BC34A;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
+}
+.to i{
+	padding: 25px;
+}
+.zx{
+	position: fixed;
+	width: 300px;
+	top: 70px;
+	left: 0;
+	bottom: 0;
+	background: #689F38;
+}
+.zx ul{
+	padding-left: 20px;
+}
+.btn{
+	transition: transform .5s;
+}
+.jt{
+	transition: transform .5s;
+}
