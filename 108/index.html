@@ -3,79 +3,87 @@
 	<head>
 		<meta charset="utf-8" />
 		<title></title>
-		<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="css/a.css"/>
+		<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<style type="text/css">
+			p{
+				margin: 0;
+			}
+			.win{
+				width: 300px;
+				height: 300px;
+				background-color: #dfd;
+				margin: auto;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+			}
+			.win .zx{
+				width: 100%;
+				height: 20px;
+			}
+			.win .zx i{
+				margin-left: 280px;
+			}
+			.win{
+				opacity: 0;
+			}
+			.win.show{
+				animation: rubberband 1s;
+				opacity: 1;
+			}
+			@keyframes rubberband{
+				0%{opacity: 0;}
+				20%{opacity: .6;}
+				40%{opacity: .2;}
+				60%{opacity: .8;}
+				80%{opacity: .4;}
+				100%{opacity: 1;}
+			}
+		</style>
 	</head>
 	<body>
-		<div class="to">
-			<i class="fa fa-reorder btn"></i>案例
-		</div>
-		<div class="zx" style="display: none;">
-			<ul>
-				<li class="Item">Item1 <i class="fa fa-angle-right jt"></i>
-					<ul class="submenu" style="display: none;">
-						<li>Item1-a</li>
-						<li>Item1-b</li>
-						<li>Item1-c</li>
-						<li>Item1-d</li>
-					</ul>
-				</li>
-				<li class="Item">Item2 <i class="fa fa-angle-right jt"></i>
-					<ul class="submenu" style="display: none;">
-						<li>Item2-a</li>
-						<li>Item2-b</li>
-						<li>Item2-c</li>
-						<li>Item2-d</li>
-					</ul>
-				</li>
-				<li class="Item">Item3 <i class="fa fa-angle-right jt"></i>
-					<ul class="submenu" style="display: none;">
-						<li>Item3-a</li>
-						<li>Item3-b</li>
-						<li>Item3-c</li>
-						<li>Item3-d</li>
-					</ul>
-				</li>
-				<li class="Item">Item4 <i class="fa fa-angle-right jt" ></i>
-					<ul class="submenu" style="display: none;">
-						<li>Item4-a</li>
-						<li>Item4-b</li>
-						<li>Item4-c</li>
-						<li>Item4-d</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
+		<a class="a" href="#" data-content="模拟窗口案例">打开模拟窗口</a>
+		<p class="a" data-content="另外的一些内容">淡淡道</p>
+		<!--<div class="win">
+				<div class="zx">
+					<i class="fa fa-close"></i>
+				</div>
+				<div class="content">
+					模拟窗口案例
+				</div>
+		</div>-->
 		<script type="text/javascript">
-			var i=0;
-			var btn=document.getElementsByClassName("btn");
-			var zx=document.getElementsByClassName("zx");
-			btn[0].addEventListener("click",function() {
-				if(zx[0].style.display=="none"){
-					zx[0].style.display="block";
-					btn[0].style.transform="rotate(90deg)";
+			var oModal=document.getElementsByClassName("a");
+			var owin,ozx,ocontent;
+			if(oModal.length>=1){
+				owin = document.createElement("div");
+				owin.className="win";
+				document.body.appendChild(owin);
+				
+				ozx=document.createElement("div");
+				ozx.className="zx";
+				ozx.innerHTML = "<i class='fa fa-close'></i>";
+				ozx.addEventListener("click",guan);
+				owin.appendChild(ozx);
+				
+				ocontent=document.createElement("div");
+				ocontent.className="content";
+				owin.appendChild(ocontent);
+				for(i=0;i<oModal.length;i++){
+					oModal[i].addEventListener("click",fang);
 				}
-				else{
-					zx[0].style.display="none";
-					btn[0].style.transform="rotate(0deg)";
-				}
-			})
-			var Item=document.getElementsByClassName("Item");
-			var submenu=document.getElementsByClassName("submenu");
-			var jt=document.getElementsByClassName("jt");
-			for(i=0;i<4;i++){
-				Item[i].addEventListener("click",function(n) {
-					return function() {
-						if(submenu[n].style.display=="none"){
-							submenu[n].style.display="block";
-							jt[n].style.transform="rotate(90deg)";
-						}
-						else{
-							jt[n].style.transform="rotate(0deg)";
-							submenu[n].style.display="none";
-						}
-					}
-				}(i));
+			}
+			else{
+				document.write("没有可以模拟窗口的对象");
+			}
+			function fang (event) {
+				owin.classList.add('show');
+				ocontent.innerHTML=event.target.dataset.content;
+			}
+			function guan () {
+				owin.classList.remove('show');
 			}
 		</script>
 	</body>
